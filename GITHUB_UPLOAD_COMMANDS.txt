@@ -1,0 +1,173 @@
+╔══════════════════════════════════════════════════════════════════╗
+║              GITHUB UPLOAD - QUICK COMMANDS                      ║
+║                  Copy & Paste These                              ║
+╚══════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 1: CONFIGURE GIT (First Time Only)                          │
+└──────────────────────────────────────────────────────────────────┘
+
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 2: INITIALIZE REPOSITORY                                    │
+└──────────────────────────────────────────────────────────────────┘
+
+cd d:\bookmyshow
+git init
+git status
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 3: ADD ALL FILES (node_modules will be ignored)             │
+└──────────────────────────────────────────────────────────────────┘
+
+git add .
+git status
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 4: CREATE FIRST COMMIT                                      │
+└──────────────────────────────────────────────────────────────────┘
+
+git commit -m "Initial commit: BookMyShow clone with MongoDB"
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 5: CREATE GITHUB REPOSITORY                                 │
+└──────────────────────────────────────────────────────────────────┘
+
+1. Go to: https://github.com
+2. Click "+" → "New repository"
+3. Name: bookmyshow-clone
+4. Description: Movie ticket booking system
+5. Choose Public or Private
+6. DO NOT initialize with README
+7. Click "Create repository"
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 6: CONNECT TO GITHUB                                        │
+│ (Replace YOUR-USERNAME with your GitHub username)                │
+└──────────────────────────────────────────────────────────────────┘
+
+git remote add origin https://github.com/YOUR-USERNAME/bookmyshow-clone.git
+git remote -v
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 7: PUSH TO GITHUB                                           │
+└──────────────────────────────────────────────────────────────────┘
+
+git branch -M main
+git push -u origin main
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ STEP 8: VERIFY                                                   │
+└──────────────────────────────────────────────────────────────────┘
+
+Go to: https://github.com/YOUR-USERNAME/bookmyshow-clone
+
+✅ Check: node_modules folder is NOT there
+✅ Check: .env file is NOT there
+✅ Check: All source code is there
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ FUTURE UPDATES                                                   │
+└──────────────────────────────────────────────────────────────────┘
+
+# When you make changes:
+git add .
+git commit -m "Description of changes"
+git push
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ WHAT GETS UPLOADED                                               │
+└──────────────────────────────────────────────────────────────────┘
+
+✅ Uploaded:
+   - All .js, .jsx, .css files
+   - package.json files
+   - Documentation (.md files)
+   - .gitignore file
+   - Configuration files
+
+❌ NOT Uploaded (automatically ignored):
+   - node_modules/ folders
+   - .env files
+   - Build folders
+   - Log files
+   - IDE settings
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+Error: "remote origin already exists"
+Solution: git remote remove origin
+          Then add again
+
+Error: "failed to push"
+Solution: git pull origin main --rebase
+          git push origin main
+
+Error: "not a git repository"
+Solution: Make sure you're in d:\bookmyshow folder
+          Run: git init
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ USEFUL COMMANDS                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+# Check status
+git status
+
+# View commit history
+git log --oneline
+
+# View what changed
+git diff
+
+# Undo changes (before commit)
+git checkout -- filename
+
+# View remote URL
+git remote -v
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│ COMPLETE COMMAND SEQUENCE (Copy All)                             │
+└──────────────────────────────────────────────────────────────────┘
+
+cd d:\bookmyshow
+git init
+git add .
+git commit -m "Initial commit: BookMyShow clone"
+git remote add origin https://github.com/YOUR-USERNAME/bookmyshow-clone.git
+git branch -M main
+git push -u origin main
+
+
+═══════════════════════════════════════════════════════════════════
+
+IMPORTANT NOTES:
+
+1. Replace YOUR-USERNAME with your actual GitHub username
+2. node_modules will be automatically ignored (already in .gitignore)
+3. .env files will NOT be uploaded (keeps secrets safe)
+4. After upload, others can clone with:
+   git clone https://github.com/YOUR-USERNAME/bookmyshow-clone.git
+
+═══════════════════════════════════════════════════════════════════
+
+REPOSITORY URL AFTER UPLOAD:
+https://github.com/YOUR-USERNAME/bookmyshow-clone
+
+═══════════════════════════════════════════════════════════════════

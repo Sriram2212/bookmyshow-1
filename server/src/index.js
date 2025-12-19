@@ -21,7 +21,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const adminApp = express();
 const PORT = process.env.PORT || 5000;
-const ADMIN_PORT = process.env.ADMIN_PORT || "https://bookmyshow-1-three.vercel.app";
+const ADMIN_PORT = process.env.ADMIN_PORT || 'https://bookmyshow-1-1.onrender.com';
 
 // Middleware for main app
 app.use(cors({

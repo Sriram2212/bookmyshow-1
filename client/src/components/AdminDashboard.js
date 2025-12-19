@@ -49,7 +49,7 @@ const AdminDashboard = () => {
     totalRevenue: 0
   });
 
-  const API_URL = 'http://localhost:5001';
+  const API_URL = 'https://bookmyshow-1-three.vercel.app';
 
   // Check if already logged in
   useEffect(() => {

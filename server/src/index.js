@@ -25,7 +25,10 @@ const ADMIN_PORT = process.env.ADMIN_PORT || 5001;
 
 // Middleware for main app
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [
+    process.env.CLIENT_URL,
+    "https://bookmyshow-ftn6nd7x7-sriram2212s-projects.vercel.app"
+  ],
   credentials: true
 }));
 app.use(express.json());

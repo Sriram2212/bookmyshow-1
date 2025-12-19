@@ -21,14 +21,14 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const adminApp = express();
 const PORT = process.env.PORT || 5000;
-const ADMIN_PORT = process.env.ADMIN_PORT || "https://bookmyshow-1-three.vercel.app/admin";
+const ADMIN_PORT = process.env.ADMIN_PORT || "https://bookmyshow-1-three.vercel.app";
 
 // Middleware for main app
 app.use(cors({
   origin: [
     process.env.CLIENT_URL,
     "https://bookmyshow-ftn6nd7x7-sriram2212s-projects.vercel.app",
-    "https://bookmyshow-1-three.vercel.app/admin"
+    "https://bookmyshow-1-three.vercel.app"
   ],
   credentials: true
 }));

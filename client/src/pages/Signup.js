@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authService } from '../services/authService';
+import { useAuth } from '../contexts/AuthContext';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
   const handleChange = (e) => {
     setFormData({
@@ -27,7 +28,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await authService.signup(formData);
+      const response = await signup(formData);
       
       if (response.success) {
         localStorage.setItem('token', response.data.token);

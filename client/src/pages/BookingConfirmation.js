@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { bookingService } from '../services/bookingService';
 
 const BookingConfirmation = () => {
   const { bookingId } = useParams();
-  const navigate = useNavigate();
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    fetchBooking();
-  }, [bookingId]);
-
-  const fetchBooking = async () => {
+  const fetchBooking = useCallback(async () => {
     try {
       setLoading(true);
       const response = await bookingService.getBookingById(bookingId);
@@ -25,7 +20,11 @@ const BookingConfirmation = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [bookingId]);
+
+  useEffect(() => {
+    fetchBooking();
+  }, [fetchBooking]);
 
   if (loading) {
     return (
@@ -158,7 +157,7 @@ const BookingConfirmation = () => {
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold text-gray-900">Total Amount</span>
                 <span className="text-2xl font-bold text-primary-600">
-                  ${booking.totalAmount.toFixed(2)}
+                  ₹{booking.totalAmount.toFixed(0)}
                 </span>
               </div>
             </div>

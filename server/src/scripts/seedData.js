@@ -8,7 +8,7 @@ const Show = require('../models/Show');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bookmyshow');
+    await mongoose.connect( 'mongodb+srv://msriram2212_db_user:Sri_89730@bookmyshow.y5uqbfe.mongodb.net/?appName=bookmyshow');
     console.log('✅ MongoDB Connected for seeding');
   } catch (error) {
     console.error('❌ MongoDB connection error:', error);

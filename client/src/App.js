@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
-import { authService } from './services/authService';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -7,16 +7,26 @@ import MovieShows from './pages/MovieShows';
 import SeatSelection from './components/SeatSelection';
 import BookingConfirmation from './pages/BookingConfirmation';
 import MyBookings from './pages/MyBookings';
+import AdminDashboard from './components/AdminDashboard';
 import PrivateRoute from './utils/PrivateRoute';
 
-function App() {
-  const isAuthenticated = authService.isAuthenticated();
-  const user = authService.getCurrentUser();
+function AppContent() {
+  const { isAuthenticated, user, logout, loading } = useAuth();
 
   const handleLogout = () => {
-    authService.logout();
-    window.location.href = '/login';
+    logout();
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Router>
@@ -81,6 +91,7 @@ function App() {
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/movie/:movieId" element={<MovieShows />} />
@@ -113,6 +124,14 @@ function App() {
         </div>
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

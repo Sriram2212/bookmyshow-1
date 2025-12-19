@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { movieService } from '../services/movieService';
 import { bookingService } from '../services/bookingService';
 import { authService } from '../services/authService';
+import { formatCurrency } from '../utils/currency';
 
 const SeatSelection = () => {
   const { showId } = useParams();
@@ -26,6 +27,7 @@ const SeatSelection = () => {
         clearInterval(lockTimer);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showId]);
 
   const fetchShow = async () => {
@@ -256,7 +258,7 @@ const SeatSelection = () => {
                           }
                           disabled:opacity-50
                         `}
-                        title={`${seat.seatNumber} - $${seat.price}`}
+                        title={`${seat.seatNumber} - ₹${seat.price}`}
                       >
                         {seat.column}
                       </button>
@@ -296,12 +298,12 @@ const SeatSelection = () => {
                     key={idx}
                     className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded mr-2 mb-2"
                   >
-                    {ls.seatNumber} (${ls.price})
+                    {ls.seatNumber} (₹{ls.price})
                   </span>
                 ))}
               </div>
               <div className="text-xl font-bold mb-4">
-                Total: ${calculateTotal().toFixed(2)}
+                Total: ₹{calculateTotal().toFixed(0)}
               </div>
               <div className="flex gap-4">
                 <button
